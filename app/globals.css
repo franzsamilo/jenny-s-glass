@@ -1,0 +1,363 @@
+@import "tailwindcss";
+
+/* ============================================================
+   JENNY'S SUPPLY — Trust & Heritage design tokens
+   Architectural glass & aluminum. Blueprint precision.
+   Source: brief/DESIGN.md
+   ============================================================ */
+
+:root {
+  /* Surfaces — warm-white "premium paper" base */
+  --surface: #f9f9ff;
+  --surface-dim: #cfdaf2;
+  --surface-bright: #ffffff;
+  --container-lowest: #ffffff;
+  --container-low: #f0f3ff;
+  --container: #e7eeff;
+  --container-high: #dee8ff;
+  --container-highest: #d8e3fb;
+
+  /* Ink */
+  --on-surface: #111c2d;
+  --on-surface-variant: #43474f;
+  --inverse-surface: #1a2030;
+  --inverse-on-surface: #ecf1ff;
+
+  /* Lines */
+  --outline: #737780;
+  --outline-variant: #c3c6d1;
+  --hairline: #dde2ee;
+
+  /* Brand */
+  --primary: #001e40;
+  --primary-hover: #0a2d57;
+  --primary-container: #003366;
+  --on-primary: #ffffff;
+  --on-primary-container: #799dd6;
+  --inverse-primary: #a7c8ff;
+
+  /* Secondary — soft slate (aluminum) */
+  --secondary: #505f76;
+  --secondary-container: #d0e1fb;
+  --on-secondary: #ffffff;
+  --on-secondary-container: #54647a;
+
+  /* Tertiary — neutral graphite */
+  --tertiary: #1e1e1c;
+  --tertiary-container: #333331;
+
+  /* Status */
+  --error: #ba1a1a;
+  --on-error: #ffffff;
+  --success: #1b5e20;
+  --warning: #b26b00;
+
+  /* Accents — used sparingly for blueprint annotations */
+  --blueprint: #1f477b;
+  --blueprint-faint: rgba(31, 71, 123, 0.12);
+  --gold: #b58a3a;
+
+  /* Spatial */
+  --container-max: 1280px;
+  --gutter: 24px;
+  --margin-desktop: 64px;
+  --margin-mobile: 20px;
+}
+
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-dim: var(--surface-dim);
+  --color-surface-bright: var(--surface-bright);
+  --color-container-lowest: var(--container-lowest);
+  --color-container-low: var(--container-low);
+  --color-container: var(--container);
+  --color-container-high: var(--container-high);
+  --color-container-highest: var(--container-highest);
+
+  --color-ink: var(--on-surface);
+  --color-ink-soft: var(--on-surface-variant);
+  --color-inverse: var(--inverse-surface);
+  --color-on-inverse: var(--inverse-on-surface);
+
+  --color-line: var(--outline);
+  --color-line-soft: var(--outline-variant);
+  --color-hairline: var(--hairline);
+
+  /* Aliases matching brief naming for component ergonomics */
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+  --color-on-primary: var(--on-primary);
+  --color-inverse-primary: var(--inverse-primary);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary: var(--on-primary);
+  --color-on-primary-container: var(--on-primary-container);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-container: var(--secondary-container);
+
+  --color-tertiary: var(--tertiary);
+  --color-blueprint: var(--blueprint);
+  --color-blueprint-faint: var(--blueprint-faint);
+  --color-gold: var(--gold);
+  --color-error: var(--error);
+
+  --font-serif: var(--font-source-serif), "Source Serif 4", ui-serif, Georgia, serif;
+  --font-sans: var(--font-inter), Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jet-mono), "JetBrains Mono", ui-monospace, monospace;
+
+  --radius-sm: 2px;
+  --radius: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+
+  --tracking-arch: 0.18em;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+
+html {
+  font-feature-settings: "ss01", "ss02", "cv11";
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--surface);
+  color: var(--on-surface);
+  font-family: var(--font-inter), Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+
+/* ============================================================
+   ARCHITECTURAL UTILITIES
+   ============================================================ */
+
+.paper-tex {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.07  0 0 0 0 0.11  0 0 0 0 0.18  0 0 0 0.035 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 180px 180px;
+}
+
+.blueprint-grid {
+  background-image:
+    linear-gradient(to right, rgba(31, 71, 123, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(31, 71, 123, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.blueprint-grid-dense {
+  background-image:
+    linear-gradient(to right, rgba(31, 71, 123, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(31, 71, 123, 0.05) 1px, transparent 1px),
+    linear-gradient(to right, rgba(31, 71, 123, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(31, 71, 123, 0.02) 1px, transparent 1px);
+  background-size: 96px 96px, 96px 96px, 24px 24px, 24px 24px;
+}
+
+.cad-label {
+  font-family: var(--font-jet-mono), "JetBrains Mono", ui-monospace, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blueprint);
+}
+
+.h-display {
+  font-family: var(--font-source-serif), "Source Serif 4", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+  color: var(--on-surface);
+}
+
+.eyebrow {
+  font-family: var(--font-inter), Inter, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-arch);
+  text-transform: uppercase;
+  color: var(--blueprint);
+}
+
+.hr-arch {
+  height: 1px;
+  background: var(--hairline);
+  border: none;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  background: var(--primary);
+  color: var(--on-primary);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  border: 1px solid var(--primary);
+  transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px -16px rgba(0, 30, 64, 0.45);
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  background: transparent;
+  color: var(--on-surface);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  border: 1px solid var(--outline-variant);
+  transition: background 200ms ease, border-color 200ms ease, color 200ms ease;
+  cursor: pointer;
+}
+.btn-secondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--container-low);
+}
+
+.card-arch {
+  background: var(--container-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius);
+  transition: border-color 240ms ease, transform 240ms ease, background 240ms ease;
+}
+.card-arch:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee-x 45s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes draw-stroke {
+  from { stroke-dashoffset: 1200; opacity: 0; }
+  to { stroke-dashoffset: 0; opacity: 1; }
+}
+@keyframes float-down {
+  0% { opacity: 0; transform: translateY(-12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes slide-right {
+  from { transform: translateX(-12px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes grow-x {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.anim-fade-up {
+  opacity: 0;
+  animation: fade-up 0.8s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+.anim-fade-in {
+  opacity: 0;
+  animation: fade-in 0.9s ease forwards;
+}
+.anim-float-down {
+  opacity: 0;
+  animation: float-down 0.8s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+.anim-slide-right {
+  opacity: 0;
+  animation: slide-right 0.8s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+
+/* Stagger child reveal — used inside Stagger primitive.
+   data-stagger="in" on parent triggers, --stagger-index ordinal applies delay. */
+.stagger-child {
+  opacity: 0;
+  transform: var(--initial-transform, translateY(18px));
+  transition:
+    opacity var(--stagger-duration, 0.6s) cubic-bezier(0.22,1,0.36,1),
+    transform var(--stagger-duration, 0.6s) cubic-bezier(0.22,1,0.36,1);
+  transition-delay: calc(var(--stagger-delay, 0.05s) + (var(--stagger-step, 0.08s) * var(--stagger-index, 0)));
+}
+[data-stagger="in"] > .stagger-child,
+[data-stagger="in"] > * > .stagger-child {
+  opacity: 1;
+  transform: none;
+}
+
+/* SVG draw-in stroke variant */
+.draw-line {
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: draw-stroke 1.6s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+
+/* Underline grow */
+.grow-x {
+  transform-origin: left;
+  animation: grow-x 0.7s 0.5s cubic-bezier(0.22,1,0.36,1) backwards;
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb {
+  background: var(--outline-variant);
+  border-radius: 999px;
+  border: 2px solid var(--surface);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--secondary); }
+
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.container-arch {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--margin-mobile);
+}
+@media (min-width: 768px) {
+  .container-arch { padding-inline: var(--margin-desktop); }
+}
