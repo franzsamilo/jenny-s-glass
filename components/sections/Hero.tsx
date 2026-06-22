@@ -6,13 +6,13 @@ import { business, credentials } from "@/lib/data";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden paper-grain">
+    <section className="relative overflow-hidden glow-blue">
       <div className="absolute inset-x-0 top-0 h-px bg-[color:var(--steel-line)]" aria-hidden />
       <div className="container-page relative grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center pt-16 pb-20 lg:pt-24 lg:pb-28">
         {/* — copy — */}
         <div className="flex flex-col">
           <Reveal>
-            <Eyebrow brass rule>
+            <Eyebrow blue rule>
               {business.region} · Est. {business.estYear}
             </Eyebrow>
           </Reveal>
@@ -48,7 +48,7 @@ export function Hero() {
             <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2">
               {["Licensed business", "Official receipts", `${business.years} years in Antique`].map((c) => (
                 <li key={c} className="inline-flex items-center gap-2 text-[13px] text-ink-soft">
-                  <Check className="h-3.5 w-3.5 text-brass" strokeWidth={2.5} />
+                  <Check className="h-3.5 w-3.5 text-blue" strokeWidth={2.5} />
                   {c}
                 </li>
               ))}
@@ -103,7 +103,7 @@ export function Hero() {
           {credentials.map((c, i) => (
             <span key={c} className="inline-flex items-center gap-8">
               <span className="mono-data text-[11px] tracking-[0.14em] uppercase text-steel-dark">{c}</span>
-              {i < credentials.length - 1 && <span className="hidden sm:inline-block h-1 w-1 rounded-full bg-brass" />}
+              {i < credentials.length - 1 && <span className="hidden sm:inline-block h-1 w-1 rounded-full bg-blue" />}
             </span>
           ))}
         </div>

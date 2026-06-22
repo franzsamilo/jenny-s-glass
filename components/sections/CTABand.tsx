@@ -9,13 +9,13 @@ export function CTABand() {
       <div className="absolute inset-0 grid-faint opacity-70 pointer-events-none" aria-hidden />
       {/* faint stamp ring */}
       <div className="absolute -right-16 top-1/2 -translate-y-1/2 pointer-events-none opacity-[0.12] hidden md:block" aria-hidden>
-        <div className="rounded-full border-2 border-[color:var(--brass-bright)]" style={{ width: 360, height: 360 }} />
-        <div className="absolute inset-6 rounded-full border border-[color:var(--brass-bright)]" />
+        <div className="rounded-full border-2 border-[color:var(--blue-bright)]" style={{ width: 360, height: 360 }} />
+        <div className="absolute inset-6 rounded-full border border-[color:var(--blue-bright)]" />
       </div>
 
       <div className="container-page relative grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
         <Reveal>
-          <Eyebrow brass rule>Ready when you are</Eyebrow>
+          <Eyebrow blue rule>Ready when you are</Eyebrow>
           <h2 className="display display-lg !text-[color:var(--on-navy)] mt-5">
             Get a quote — and
             <br />
@@ -29,7 +29,7 @@ export function CTABand() {
             after the job is done.
           </p>
           <div className="flex flex-wrap gap-3">
-            <a href="#quote" className="btn btn-brass">
+            <a href="#quote" className="btn btn-blue">
               Get a quote <ArrowRight className="h-4 w-4" strokeWidth={2} />
             </a>
             {business.phone ? (

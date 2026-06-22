@@ -46,7 +46,7 @@ export function QuoteForm() {
     <section id="quote" className="relative section-y bg-[color:var(--paper-2)] border-y border-steel-line overflow-hidden">
       <div className="container-page relative grid lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-start">
         <Reveal className="lg:sticky lg:top-24">
-          <Eyebrow brass rule>Get a quote</Eyebrow>
+          <Eyebrow blue rule>Get a quote</Eyebrow>
           <h2 className="display display-lg mt-5">
             Tell us what you need.
           </h2>
@@ -69,7 +69,7 @@ export function QuoteForm() {
               </a>
             ) : null}
             <a href={business.messengerHref} target="_blank" rel="noopener noreferrer" className="framed framed-hover flex items-center gap-3.5 p-4">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-[var(--r)] bg-[color:var(--brass)] text-white shrink-0">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-[var(--r)] bg-[color:var(--blue)] text-white shrink-0">
                 <MessageCircle className="h-4.5 w-4.5" strokeWidth={1.5} />
               </span>
               <span className="flex flex-col">
@@ -148,7 +148,7 @@ export function QuoteForm() {
               </div>
             ) : (
               <div className="flex flex-col items-center text-center py-8">
-                <span className="inline-flex h-14 w-14 items-center justify-center rounded-full border-2 border-[color:var(--brass)] text-[color:var(--brass)]">
+                <span className="inline-flex h-14 w-14 items-center justify-center rounded-full border-2 border-[color:var(--blue)] text-[color:var(--blue)]">
                   <Check className="h-6 w-6" strokeWidth={2.5} />
                 </span>
                 <h3 className="display display-md mt-6">Got it — thank you.</h3>
@@ -157,7 +157,7 @@ export function QuoteForm() {
                   and get back to you by call or Messenger. For a faster reply, message us
                   directly anytime.
                 </p>
-                <a href={business.messengerHref} target="_blank" rel="noopener noreferrer" className="btn btn-brass mt-7">
+                <a href={business.messengerHref} target="_blank" rel="noopener noreferrer" className="btn btn-blue mt-7">
                   <MessageCircle className="h-4 w-4" /> Message us now
                 </a>
               </div>

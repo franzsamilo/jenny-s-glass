@@ -11,7 +11,7 @@ export function Accountability() {
           <div className="framed relative overflow-hidden bg-[color:var(--navy)] text-on-navy p-8 md:p-10 lg:sticky lg:top-24">
             <div className="absolute inset-0 grid-faint opacity-60 pointer-events-none" aria-hidden />
             <div className="relative">
-              <Eyebrow brass rule>Why Jennys</Eyebrow>
+              <Eyebrow blue rule>Why Jennys</Eyebrow>
               <h2 className="display display-lg !text-[color:var(--on-navy)] mt-5">
                 When the job&apos;s done, you&apos;ll still have a real store to call.
               </h2>
@@ -23,7 +23,7 @@ export function Accountability() {
               </p>
 
               <div className="mt-9 flex items-center gap-5">
-                <div className="grid place-items-center rounded-full bg-[color:var(--navy-deep)]" style={{ width: 128, height: 128 }}>
+                <div className="grid place-items-center rounded-full bg-[color:var(--white)]" style={{ width: 128, height: 128 }}>
                   <Seal top="We answer for" main="the work" bottom={`Est. 2017`} />
                 </div>
                 <p className="text-[13.5px] leading-relaxed text-white/60 max-w-[14rem]">

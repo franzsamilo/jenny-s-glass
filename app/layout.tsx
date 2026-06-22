@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Zilla_Slab, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Archivo, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { business } from "@/lib/data";
 
-const display = Zilla_Slab({
-  variable: "--font-zilla",
+const display = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["600", "700", "800"],
   display: "swap",
 });
 

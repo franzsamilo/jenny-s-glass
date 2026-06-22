@@ -22,7 +22,7 @@ export function Story() {
             </div>
             <div className="flex items-center justify-between px-4 py-3 border-t border-steel-line bg-[color:var(--paper-2)]">
               <span className="mono-data text-[11px] tracking-[0.14em] uppercase text-steel-dark">Family-run</span>
-              <span className="mono-data text-[11px] tracking-[0.14em] uppercase text-brass">Since {business.founded}</span>
+              <span className="mono-data text-[11px] tracking-[0.14em] uppercase text-blue">Since {business.founded}</span>
             </div>
           </div>
         </Reveal>
@@ -44,7 +44,7 @@ export function Story() {
             </Reveal>
           ))}
           <Reveal delay={0.3}>
-            <blockquote className="mt-8 pl-5 border-l-2 border-[color:var(--brass)]">
+            <blockquote className="mt-8 pl-5 border-l-2 border-[color:var(--blue)]">
               <p className="display" style={{ fontSize: 22, lineHeight: 1.3 }}>{story.pullquote}</p>
             </blockquote>
           </Reveal>

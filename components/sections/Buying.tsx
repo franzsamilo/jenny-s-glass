@@ -51,7 +51,7 @@ export function Buying() {
             <div className="framed framed-strong overflow-hidden lg:sticky lg:top-24">
               <div className="flex items-center justify-between px-5 py-3.5 bg-[color:var(--navy)] text-on-navy">
                 <span className="mono-data text-[11px] tracking-[0.16em] uppercase">Terms at a glance</span>
-                <span className="mono-data text-[11px] tracking-[0.16em] uppercase text-[color:var(--brass-bright)]">PHP</span>
+                <span className="mono-data text-[11px] tracking-[0.16em] uppercase text-[color:var(--blue-bright)]">PHP</span>
               </div>
               <dl>
                 {terms.map((t) => (

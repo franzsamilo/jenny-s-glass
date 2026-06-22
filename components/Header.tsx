@@ -42,7 +42,7 @@ export function Header() {
               className="relative px-3 py-2 text-[13.5px] font-medium text-ink-soft hover:text-navy transition-colors group"
             >
               <span className="relative z-10">{item.label}</span>
-              <span className="pointer-events-none absolute inset-x-3 -bottom-0.5 h-0.5 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 bg-[color:var(--brass)]" />
+              <span className="pointer-events-none absolute inset-x-3 -bottom-0.5 h-0.5 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 bg-[color:var(--blue)]" />
             </a>
           ))}
         </nav>
@@ -63,9 +63,9 @@ export function Header() {
         </div>
       </div>
 
-      {/* scroll-progress hairline (brass) */}
+      {/* scroll-progress hairline (blue) */}
       <span
-        className="absolute inset-x-0 bottom-0 h-0.5 origin-left bg-[color:var(--brass)] transition-transform duration-150"
+        className="absolute inset-x-0 bottom-0 h-0.5 origin-left bg-[color:var(--blue)] transition-transform duration-150"
         style={{ transform: `scaleX(${progress})` }}
         aria-hidden
       />

@@ -47,7 +47,7 @@ export function Services() {
                   <ul className="mt-5 pt-5 border-t border-steel-line flex flex-col gap-2.5">
                     {p.items.map((it) => (
                       <li key={it} className="inline-flex items-center gap-2.5 text-[14px] text-ink">
-                        <Check className="h-3.5 w-3.5 text-brass shrink-0" strokeWidth={2.5} />
+                        <Check className="h-3.5 w-3.5 text-blue shrink-0" strokeWidth={2.5} />
                         {it}
                       </li>
                     ))}

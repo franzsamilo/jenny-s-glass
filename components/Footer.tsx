@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
 import { Phone, MessageCircle, MapPin, Clock, ArrowUpRight } from "@/components/primitives/Icons";
-import { Logo } from "./Logo";
 import { business, primaryNav } from "@/lib/data";
 
 export function Footer() {
@@ -9,7 +9,7 @@ export function Footer() {
       <div className="container-page relative pt-16 pb-10">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 pb-12 border-b border-white/10">
           <div className="lg:w-2/5 flex flex-col gap-6">
-            <Logo invert />
+            <img src="/logo-jennys.jpg" alt={business.name} className="w-44 h-auto rounded-[var(--r)] border border-white/10" />
             <p className="text-[15px] leading-relaxed text-white/70 max-w-md">
               A real, licensed glass-and-aluminum store in the {business.region}. We
               supply, fabricate, and install — and we stand behind every job. Family-run
@@ -19,7 +19,7 @@ export function Footer() {
             <div className="flex flex-col gap-3 mt-1">
               {business.phone ? (
                 <a className="group inline-flex items-center gap-3 text-[14px] text-white/85 hover:text-white" href={business.phoneHref}>
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-[var(--r)] border border-white/15 group-hover:border-[color:var(--brass)] transition-colors">
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-[var(--r)] border border-white/15 group-hover:border-[color:var(--blue)] transition-colors">
                     <Phone className="h-4 w-4" strokeWidth={1.5} />
                   </span>
                   {business.phone}
@@ -27,14 +27,14 @@ export function Footer() {
               ) : null}
               {business.phoneAlt ? (
                 <a className="group inline-flex items-center gap-3 text-[14px] text-white/70 hover:text-white" href={business.phoneAltHref}>
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-[var(--r)] border border-white/10 group-hover:border-[color:var(--brass)] transition-colors">
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-[var(--r)] border border-white/10 group-hover:border-[color:var(--blue)] transition-colors">
                     <Phone className="h-4 w-4" strokeWidth={1.5} />
                   </span>
                   {business.phoneAlt}
                 </a>
               ) : null}
               <a className="group inline-flex items-center gap-3 text-[14px] text-white/85 hover:text-white" href={business.messengerHref} target="_blank" rel="noopener noreferrer">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-[var(--r)] border border-white/15 group-hover:border-[color:var(--brass)] transition-colors">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-[var(--r)] border border-white/15 group-hover:border-[color:var(--blue)] transition-colors">
                   <MessageCircle className="h-4 w-4" strokeWidth={1.5} />
                 </span>
                 Message us on Messenger
@@ -76,7 +76,7 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pt-8">
-          <span className="mono-data text-[11px] tracking-[0.16em] uppercase" style={{ color: "var(--brass-bright)" }}>
+          <span className="mono-data text-[11px] tracking-[0.16em] uppercase" style={{ color: "var(--blue-bright)" }}>
             Licensed business · Official receipts · Est. {business.estYear}
           </span>
           <span className="text-[12px] text-white/50">

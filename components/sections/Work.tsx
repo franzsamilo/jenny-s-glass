@@ -45,7 +45,7 @@ export function Work() {
         <Reveal delay={0.1}>
           <p className="mt-8 text-[14.5px] text-ink-soft inline-flex items-center gap-2">
             See more on our Facebook page
-            <a href="https://www.facebook.com/glass.aluminum.319" target="_blank" rel="noopener noreferrer" className="link-brass inline-flex items-center gap-1">
+            <a href="https://www.facebook.com/glass.aluminum.319" target="_blank" rel="noopener noreferrer" className="link-blue inline-flex items-center gap-1">
               @glass.aluminum.319 <ArrowRight className="h-3.5 w-3.5" />
             </a>
           </p>

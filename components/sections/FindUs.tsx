@@ -15,7 +15,7 @@ export function FindUs() {
     <section id="find-us" className="section-y bg-[color:var(--paper-2)] border-t border-steel-line">
       <div className="container-page grid lg:grid-cols-2 gap-10 lg:gap-14 items-stretch">
         <div className="flex flex-col">
-          <Reveal><Eyebrow brass rule>Find us</Eyebrow></Reveal>
+          <Reveal><Eyebrow blue rule>Find us</Eyebrow></Reveal>
           <Reveal delay={0.06}>
             <h2 className="display display-lg mt-5">Come by the store, or message first.</h2>
           </Reveal>
@@ -57,7 +57,7 @@ export function FindUs() {
           <div className="framed framed-strong relative overflow-hidden h-full min-h-[320px] grid place-items-center">
             <div className="absolute inset-0 grid-faint opacity-100 pointer-events-none" style={{ backgroundColor: "var(--navy-deep)" }} aria-hidden />
             <div className="relative text-center px-8 py-12 text-on-navy">
-              <MapPin className="h-7 w-7 mx-auto text-[color:var(--brass-bright)]" strokeWidth={1.5} />
+              <MapPin className="h-7 w-7 mx-auto text-[color:var(--blue-bright)]" strokeWidth={1.5} />
               <p className="mono-data text-[11px] tracking-[0.18em] uppercase text-white/60 mt-4">Service area</p>
               <p className="display !text-[color:var(--on-navy)] mt-2" style={{ fontSize: "clamp(1.6rem, 3vw, 2.2rem)" }}>
                 {business.region}
