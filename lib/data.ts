@@ -23,7 +23,7 @@ type IconComponent = (props: { className?: string; strokeWidth?: number; size?: 
    store address, verified logo colour. Placeholders marked.
    ============================================================ */
 export const business = {
-  name: "Jennys Glass & Aluminum",
+  name: "Jennys Glass, Aluminum & Construction Supply",
   short: "Jennys",
   founded: "February 2017",
   estYear: "2017",
@@ -32,17 +32,15 @@ export const business = {
   area: "Serving the whole province — north to south, mainly the south.",
   hours: "8:00 AM – 5:00 PM",
   days: "Monday to Saturday",
-  // Verified from the business's public Facebook page (June 2026):
-  //   facebook.com/p/Jennys-Glass-Aluminum-Construction-Supply-100057355725036
-  // Phone is not listed publicly — Messenger is the primary channel. Add the
-  // store's number to `phone`/`phoneHref` and every "Call" option reappears.
-  phone: "",
-  phoneHref: "",
-  messenger: "Jennys Glass & Aluminum",
-  messengerHref: "https://m.me/100057355725036",
-  facebookUrl: "https://www.facebook.com/p/Jennys-Glass-Aluminum-Construction-Supply-100057355725036/",
-  // Town confirmed from the FB page ("San Jose"); exact street address TBD.
-  addressLine: "San Jose de Buenavista, Antique",
+  // Verified from the owner + the public Facebook page (facebook.com/glass.aluminum.319).
+  phone: "0917 704 1997",
+  phoneHref: "tel:+639177041997",
+  phoneAlt: "0917 311 0637",
+  phoneAltHref: "tel:+639173110637",
+  messenger: "facebook.com/glass.aluminum.319",
+  messengerHref: "https://m.me/glass.aluminum.319",
+  facebookUrl: "https://www.facebook.com/glass.aluminum.319",
+  addressLine: "T.A. Fornier St., Brgy. Atabay, San Jose de Buenavista, Antique",
 };
 
 export type NavItem = { label: string; href: string };
@@ -63,7 +61,7 @@ export type Pillar = {
   blurb: string;
   items: string[];
   icon: IconComponent;
-  swatch: string;
+  image: string;
 };
 
 export const pillars: Pillar[] = [
@@ -75,7 +73,7 @@ export const pillars: Pillar[] = [
       "Our bread and butter. Glass, aluminum, and roll-up materials with all the accessories — kept in stock at the store, ready to pick up or have delivered.",
     items: ["Glass", "Aluminum profiles", "Roll-up materials", "Accessories & fittings"],
     icon: Layers,
-    swatch: "swatch-glass",
+    image: "/store-glass-cases.jpg",
   },
   {
     id: "install",
@@ -83,9 +81,9 @@ export const pillars: Pillar[] = [
     title: "Install",
     blurb:
       "We don't just hand over materials. We install glass, windows, doors, and roll-up — and you have a real store to call if anything needs looking at afterward.",
-    items: ["Glass & windows", "Doors", "Roll-up doors & slats"],
+    items: ["Sliding doors & windows", "Glass partitions & railings", "Roll-up doors", "Screen doors"],
     icon: Wrench,
-    swatch: "swatch-aluminum",
+    image: "/glass-railing-interior.jpg",
   },
   {
     id: "fabricate",
@@ -93,9 +91,9 @@ export const pillars: Pillar[] = [
     title: "Fabricate",
     blurb:
       "Made to order from the same materials we supply — measured, cut, and built for your space.",
-    items: ["Shower enclosures", "Glass & kitchen cabinets", "Roll-up slats"],
+    items: ["Shower enclosures", "Glass & kitchen cabinets", "Tempered-glass basketball boards", "Display showcases"],
     icon: Hammer,
-    swatch: "swatch-cabinet",
+    image: "/kitchen-cabinet.jpg",
   },
 ];
 
@@ -111,6 +109,21 @@ export const catalog: CatalogRow[] = [
   { id: "aluminum", name: "Aluminum", forUse: "Window & door frames, storefronts, partitions", icon: Frame },
   { id: "rollup", name: "Roll-up materials & slats", forUse: "Roll-up doors for shops, garages, and storefronts", icon: Rollup },
   { id: "accessories", name: "Accessories & fittings", forUse: "Hinges, handles, locks, sealant, and the small parts that finish a job", icon: Bolt },
+];
+
+/* ============================================================
+   RECENT WORK — real photos from the business's own jobs
+   ============================================================ */
+export type WorkItem = { src: string; alt: string; tag: string };
+export const work: WorkItem[] = [
+  { src: "/glass-railing-interior.jpg", alt: "Stainless-and-glass balustrade on an interior mezzanine", tag: "Glass railing" },
+  { src: "/glass-partition.jpg", alt: "Black-framed glass partition with sliding panels", tag: "Glass partition" },
+  { src: "/basketball-board-shop.jpg", alt: "Tempered-glass basketball backboard fabricated in the shop", tag: "Basketball board" },
+  { src: "/sliding-windows-green.jpg", alt: "Aluminum sliding windows with tinted glass", tag: "Sliding windows" },
+  { src: "/screen-door.jpg", alt: "Aluminum screen door on a home entrance", tag: "Screen door" },
+  { src: "/arched-window.jpg", alt: "Custom arched feature window in a black frame", tag: "Feature window" },
+  { src: "/glass-display-cabinet.jpg", alt: "Glass-and-aluminum display cabinet with glass shelves", tag: "Display cabinet" },
+  { src: "/windows-stair-railing.jpg", alt: "Black-framed windows and a steel stair railing", tag: "Windows & railing" },
 ];
 
 /* ============================================================

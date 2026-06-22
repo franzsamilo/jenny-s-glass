@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Reveal } from "@/components/primitives/Reveal";
 import { Eyebrow, Seal } from "@/components/primitives/Marks";
 import { ArrowRight, MessageCircle, Check } from "@/components/primitives/Icons";
@@ -55,38 +56,39 @@ export function Hero() {
           </Reveal>
         </div>
 
-        {/* — framed-pane composition (photo-free identity) — */}
+        {/* — framed-pane composition (real work) — */}
         <Reveal direction="left" delay={0.1} className="relative">
           <div className="relative">
             <div className="framed framed-strong relative aspect-[5/4] lg:aspect-[4/5] overflow-hidden">
-              <div className="swatch swatch-glass absolute inset-0" />
-              <span className="absolute left-4 top-4 mono-data text-[10px] tracking-[0.18em] uppercase text-[color:var(--navy)]/70">
-                Fig. 01 — Glass
+              <img
+                src="/balcony-glass-railing.jpg"
+                alt="Stainless-and-glass balustrade installed on a terrace in Antique"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <span className="absolute left-3 top-3 mono-data text-[10px] tracking-[0.18em] uppercase text-white bg-[color:var(--navy)]/75 px-2 py-1 rounded-[var(--r-sm)]">
+                Glass railing · Antique
               </span>
-              <span className="absolute right-4 bottom-4 mono-data text-[10px] tracking-[0.18em] uppercase text-[color:var(--navy)]/70">
-                Supplied · Cut · Installed
-              </span>
-              <Corner className="left-2 top-2" />
-              <Corner className="right-2 top-2 rotate-90" />
-              <Corner className="right-2 bottom-2 rotate-180" />
-              <Corner className="left-2 bottom-2 -rotate-90" />
+              <Corner className="left-2 top-2 text-white/80" />
+              <Corner className="right-2 top-2 rotate-90 text-white/80" />
+              <Corner className="right-2 bottom-2 rotate-180 text-white/80" />
+              <Corner className="left-2 bottom-2 -rotate-90 text-white/80" />
             </div>
 
             {/* the seal, overlapping */}
-            <div className="absolute -left-4 -bottom-6 sm:-left-7">
+            <div className="absolute -left-4 -bottom-6 sm:-left-7 z-10">
               <div className="grid place-items-center rounded-full bg-[color:var(--paper)] shadow-[var(--shadow-overlay)]" style={{ width: 132, height: 132 }}>
                 <Seal top="Licensed · Antique" main={`Est. ${business.estYear}`} bottom="Official Receipts" />
               </div>
             </div>
 
-            {/* small material tiles */}
-            <div className="absolute -right-3 top-6 hidden sm:flex flex-col gap-2">
+            {/* small work tiles */}
+            <div className="absolute -right-3 top-6 hidden sm:flex flex-col gap-2 z-10">
               {[
-                { c: "swatch-aluminum", l: "Aluminum" },
-                { c: "swatch-rollup", l: "Roll-up" },
+                { src: "/basketball-board.jpg", l: "Backboards" },
+                { src: "/kitchen-cabinet.jpg", l: "Cabinets" },
               ].map((t) => (
-                <div key={t.l} className="framed w-24 overflow-hidden">
-                  <div className={`swatch ${t.c} h-12`} />
+                <div key={t.l} className="framed w-28 overflow-hidden bg-[color:var(--paper)]">
+                  <img src={t.src} alt={t.l} className="h-14 w-full object-cover" />
                   <div className="px-2 py-1.5 mono-data text-[9px] tracking-[0.16em] uppercase text-steel-dark">{t.l}</div>
                 </div>
               ))}
@@ -112,7 +114,7 @@ export function Hero() {
 
 function Corner({ className = "" }: { className?: string }) {
   return (
-    <svg className={`absolute h-4 w-4 text-[color:var(--navy)]/50 ${className}`} viewBox="0 0 16 16" fill="none" aria-hidden>
+    <svg className={`absolute h-4 w-4 ${className}`} viewBox="0 0 16 16" fill="none" aria-hidden>
       <path d="M1 6 V1 H6" stroke="currentColor" strokeWidth="1.5" />
     </svg>
   );

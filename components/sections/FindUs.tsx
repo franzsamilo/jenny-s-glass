@@ -7,7 +7,7 @@ export function FindUs() {
   const rows = [
     { icon: MapPin, label: "The store", value: business.addressLine, note: business.area },
     { icon: Clock, label: "Open", value: business.hours, note: business.days + " · closed Sunday" },
-    { icon: Phone, label: "Call", value: business.phone, href: business.phoneHref },
+    { icon: Phone, label: "Call", value: business.phone, note: `or ${business.phoneAlt}`, href: business.phoneHref },
     { icon: MessageCircle, label: "Messenger", value: business.messenger, href: business.messengerHref },
   ];
 

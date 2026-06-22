@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Reveal } from "@/components/primitives/Reveal";
 import { Eyebrow } from "@/components/primitives/Marks";
 import { business, story } from "@/lib/data";
@@ -5,23 +6,19 @@ import { business, story } from "@/lib/data";
 export function Story() {
   return (
     <section id="story" className="section-y">
-      <div className="container-page grid lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-16 items-center">
-        {/* photo slot (clearly marked for the asset top-up) */}
+      <div className="container-page grid lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-16 items-center">
+        {/* real photo */}
         <Reveal direction="right">
           <div className="framed framed-strong relative overflow-hidden">
-            <div className="paper-grain relative aspect-[4/5] grid place-items-center bg-[color:var(--paper-3)]">
-              <div className="flex flex-col items-center gap-3 text-center px-6">
-                <svg className="h-8 w-8 text-steel" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" aria-hidden>
-                  <rect x="3" y="6" width="18" height="14" rx="2" />
-                  <circle cx="12" cy="13" r="3.5" />
-                  <path d="M8 6l1.5-2h5L16 6" />
-                </svg>
-                <span className="mono-data text-[11px] tracking-[0.16em] uppercase text-steel-dark max-w-[14rem]">
-                  Photo — the store, the family, or a finished job
-                </span>
-                <span className="mono-data text-[10px] tracking-[0.16em] uppercase text-steel">to be added</span>
-              </div>
-              <span className="absolute left-3 top-3 mono-data text-[10px] tracking-[0.18em] uppercase text-steel-dark">Fig. 02</span>
+            <div className="relative aspect-[4/3] overflow-hidden">
+              <img
+                src="/building-exterior.jpg"
+                alt="Glass and aluminum work on a home in the Province of Antique"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <span className="absolute left-3 top-3 mono-data text-[10px] tracking-[0.18em] uppercase text-white bg-[color:var(--navy)]/70 px-2 py-1 rounded-[var(--r-sm)]">
+                Fig. 02 — Antique
+              </span>
             </div>
             <div className="flex items-center justify-between px-4 py-3 border-t border-steel-line bg-[color:var(--paper-2)]">
               <span className="mono-data text-[11px] tracking-[0.14em] uppercase text-steel-dark">Family-run</span>

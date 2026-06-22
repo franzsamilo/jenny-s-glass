@@ -25,6 +25,14 @@ export function Footer() {
                   {business.phone}
                 </a>
               ) : null}
+              {business.phoneAlt ? (
+                <a className="group inline-flex items-center gap-3 text-[14px] text-white/70 hover:text-white" href={business.phoneAltHref}>
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-[var(--r)] border border-white/10 group-hover:border-[color:var(--brass)] transition-colors">
+                    <Phone className="h-4 w-4" strokeWidth={1.5} />
+                  </span>
+                  {business.phoneAlt}
+                </a>
+              ) : null}
               <a className="group inline-flex items-center gap-3 text-[14px] text-white/85 hover:text-white" href={business.messengerHref} target="_blank" rel="noopener noreferrer">
                 <span className="inline-flex h-9 w-9 items-center justify-center rounded-[var(--r)] border border-white/15 group-hover:border-[color:var(--brass)] transition-colors">
                   <MessageCircle className="h-4 w-4" strokeWidth={1.5} />

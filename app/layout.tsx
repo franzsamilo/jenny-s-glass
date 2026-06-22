@@ -27,7 +27,7 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `${business.name} — Glass & Aluminum in the Province of Antique`,
+  title: `${business.name} — San Jose de Buenavista, Antique`,
   description:
     "A real, licensed glass-and-aluminum store serving the Province of Antique since 2017. We supply, fabricate, and install glass, aluminum, and roll-up — and we stand behind every job. Get a quote.",
   keywords: [
@@ -45,6 +45,7 @@ export const metadata: Metadata = {
       "A real, licensed store in the Province of Antique. Glass, aluminum, and roll-up — with someone to call after the job is done.",
     type: "website",
     locale: "en_PH",
+    images: ["/glass-railing-interior.jpg"],
   },
 };
 
