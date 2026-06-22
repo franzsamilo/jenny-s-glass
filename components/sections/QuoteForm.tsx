@@ -57,15 +57,17 @@ export function QuoteForm() {
           </p>
 
           <div className="mt-8 flex flex-col gap-3">
-            <a href={business.phoneHref} className="framed framed-hover flex items-center gap-3.5 p-4">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-[var(--r)] bg-[color:var(--navy)] text-[color:var(--on-navy)] shrink-0">
-                <Phone className="h-4.5 w-4.5" strokeWidth={1.5} />
-              </span>
-              <span className="flex flex-col">
-                <span className="field-label">Call us</span>
-                <span className="text-[15px] font-medium text-navy">{business.phone}</span>
-              </span>
-            </a>
+            {business.phone ? (
+              <a href={business.phoneHref} className="framed framed-hover flex items-center gap-3.5 p-4">
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-[var(--r)] bg-[color:var(--navy)] text-[color:var(--on-navy)] shrink-0">
+                  <Phone className="h-4.5 w-4.5" strokeWidth={1.5} />
+                </span>
+                <span className="flex flex-col">
+                  <span className="field-label">Call us</span>
+                  <span className="text-[15px] font-medium text-navy">{business.phone}</span>
+                </span>
+              </a>
+            ) : null}
             <a href={business.messengerHref} target="_blank" rel="noopener noreferrer" className="framed framed-hover flex items-center gap-3.5 p-4">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-[var(--r)] bg-[color:var(--brass)] text-white shrink-0">
                 <MessageCircle className="h-4.5 w-4.5" strokeWidth={1.5} />

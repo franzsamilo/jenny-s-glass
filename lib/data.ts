@@ -32,13 +32,18 @@ export const business = {
   area: "Serving the whole province — north to south, mainly the south.",
   hours: "8:00 AM – 5:00 PM",
   days: "Monday to Saturday",
-  // TODO: replace placeholders with the owner's real contact details
-  phone: "+63 999 000 0000",
-  phoneHref: "tel:+639990000000",
-  messenger: "m.me/jennysglass",
-  messengerHref: "https://m.me/jennysglass",
-  addressLine: "Province of Antique, Philippines",
-} as const;
+  // Verified from the business's public Facebook page (June 2026):
+  //   facebook.com/p/Jennys-Glass-Aluminum-Construction-Supply-100057355725036
+  // Phone is not listed publicly — Messenger is the primary channel. Add the
+  // store's number to `phone`/`phoneHref` and every "Call" option reappears.
+  phone: "",
+  phoneHref: "",
+  messenger: "Jennys Glass & Aluminum",
+  messengerHref: "https://m.me/100057355725036",
+  facebookUrl: "https://www.facebook.com/p/Jennys-Glass-Aluminum-Construction-Supply-100057355725036/",
+  // Town confirmed from the FB page ("San Jose"); exact street address TBD.
+  addressLine: "San Jose de Buenavista, Antique",
+};
 
 export type NavItem = { label: string; href: string };
 export const primaryNav: NavItem[] = [

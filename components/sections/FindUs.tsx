@@ -27,7 +27,7 @@ export function FindUs() {
           </Reveal>
 
           <div className="mt-8 flex flex-col gap-3">
-            {rows.map((r) => {
+            {rows.filter((r) => business.phone || r.label !== "Call").map((r) => {
               const inner = (
                 <>
                   <span className="inline-flex h-10 w-10 items-center justify-center rounded-[var(--r)] border border-steel-line text-navy shrink-0">

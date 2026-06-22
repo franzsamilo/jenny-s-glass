@@ -17,12 +17,14 @@ export function Footer() {
             </p>
 
             <div className="flex flex-col gap-3 mt-1">
-              <a className="group inline-flex items-center gap-3 text-[14px] text-white/85 hover:text-white" href={business.phoneHref}>
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-[var(--r)] border border-white/15 group-hover:border-[color:var(--brass)] transition-colors">
-                  <Phone className="h-4 w-4" strokeWidth={1.5} />
-                </span>
-                {business.phone}
-              </a>
+              {business.phone ? (
+                <a className="group inline-flex items-center gap-3 text-[14px] text-white/85 hover:text-white" href={business.phoneHref}>
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-[var(--r)] border border-white/15 group-hover:border-[color:var(--brass)] transition-colors">
+                    <Phone className="h-4 w-4" strokeWidth={1.5} />
+                  </span>
+                  {business.phone}
+                </a>
+              ) : null}
               <a className="group inline-flex items-center gap-3 text-[14px] text-white/85 hover:text-white" href={business.messengerHref} target="_blank" rel="noopener noreferrer">
                 <span className="inline-flex h-9 w-9 items-center justify-center rounded-[var(--r)] border border-white/15 group-hover:border-[color:var(--brass)] transition-colors">
                   <MessageCircle className="h-4 w-4" strokeWidth={1.5} />

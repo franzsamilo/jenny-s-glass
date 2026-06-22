@@ -32,9 +32,11 @@ export function CTABand() {
             <a href="#quote" className="btn btn-brass">
               Get a quote <ArrowRight className="h-4 w-4" strokeWidth={2} />
             </a>
-            <a href={business.phoneHref} className="btn btn-ghost-light">
-              <Phone className="h-4 w-4" strokeWidth={1.75} /> Call
-            </a>
+            {business.phone ? (
+              <a href={business.phoneHref} className="btn btn-ghost-light">
+                <Phone className="h-4 w-4" strokeWidth={1.75} /> Call
+              </a>
+            ) : null}
             <a href={business.messengerHref} target="_blank" rel="noopener noreferrer" className="btn btn-ghost-light">
               <MessageCircle className="h-4 w-4" strokeWidth={1.75} /> Message
             </a>
