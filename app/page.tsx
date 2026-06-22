@@ -1,29 +1,25 @@
 import { Hero } from "@/components/sections/Hero";
-import { TrustBar } from "@/components/sections/TrustBar";
-import { Categories } from "@/components/sections/Categories";
-import { Difference } from "@/components/sections/Difference";
-import { Specs } from "@/components/sections/Specs";
-import { Projects } from "@/components/sections/Projects";
-import { Process } from "@/components/sections/Process";
-import { Stats } from "@/components/sections/Stats";
-import { Testimonial } from "@/components/sections/Testimonial";
-import { QuoteForm } from "@/components/sections/QuoteForm";
+import { Services } from "@/components/sections/Services";
+import { Accountability } from "@/components/sections/Accountability";
+import { Story } from "@/components/sections/Story";
+import { Proof } from "@/components/sections/Proof";
+import { Buying } from "@/components/sections/Buying";
 import { CTABand } from "@/components/sections/CTABand";
+import { QuoteForm } from "@/components/sections/QuoteForm";
+import { FindUs } from "@/components/sections/FindUs";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <TrustBar />
-      <Categories />
-      <Difference />
-      <Specs />
-      <Projects />
-      <Process />
-      <Stats />
-      <Testimonial />
+      <Services />
+      <Accountability />
+      <Story />
+      <Proof />
+      <Buying />
       <CTABand />
       <QuoteForm />
+      <FindUs />
     </>
   );
 }

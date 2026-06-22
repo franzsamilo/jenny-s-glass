@@ -1,47 +1,50 @@
 import type { Metadata } from "next";
-import { Source_Serif_4, Inter, JetBrains_Mono } from "next/font/google";
+import { Zilla_Slab, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { business } from "@/lib/data";
 
-const sourceSerif = Source_Serif_4({
-  variable: "--font-source-serif",
+const display = Zilla_Slab({
+  variable: "--font-zilla",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  display: "swap",
+});
+
+const body = IBM_Plex_Sans({
+  variable: "--font-plex-sans",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-});
-
-const jetMono = JetBrains_Mono({
-  variable: "--font-jet-mono",
+const mono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Jenny's Supply — Premium Glass & Aluminum for Modern Architecture",
+  title: `${business.name} — Glass & Aluminum in the Province of Antique`,
   description:
-    "Engineered glass façades, aluminum extrusions, and custom fabrication for commercial contractors, architects, and high-end residential builders. Three decades of established expertise.",
+    "A real, licensed glass-and-aluminum store serving the Province of Antique since 2017. We supply, fabricate, and install glass, aluminum, and roll-up — and we stand behind every job. Get a quote.",
   keywords: [
-    "architectural glass",
-    "aluminum extrusions",
-    "curtain wall",
-    "structural glass",
-    "custom fabrication",
-    "Jenny's Supply",
+    "glass and aluminum Antique",
+    "glass supplier Antique",
+    "roll-up doors Antique",
+    "shower enclosure",
+    "kitchen cabinet glass",
+    "window installation Antique",
+    "Jennys Glass",
   ],
   openGraph: {
-    title: "Jenny's Supply — Built on Precision. Trusted by Architects.",
+    title: `${business.name} — supplied, fabricated, and installed since 2017`,
     description:
-      "Engineered glass & aluminum solutions for modern architecture since 1992.",
+      "A real, licensed store in the Province of Antique. Glass, aluminum, and roll-up — with someone to call after the job is done.",
     type: "website",
+    locale: "en_PH",
   },
 };
 
@@ -51,9 +54,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sourceSerif.variable} ${inter.variable} ${jetMono.variable} h-full antialiased`}
+      className={`${display.variable} ${body.variable} ${mono.variable} h-full`}
     >
-      <body className="min-h-full bg-surface text-ink flex flex-col">
+      <body className="min-h-full bg-paper text-ink flex flex-col antialiased">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

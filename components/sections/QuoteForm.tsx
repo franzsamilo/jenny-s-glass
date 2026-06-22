@@ -1,30 +1,32 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, Check, ChevronDown } from "@/components/primitives/Icons";
+import { ArrowRight, Check, ChevronDown, Phone, MessageCircle } from "@/components/primitives/Icons";
 import { Reveal } from "@/components/primitives/Reveal";
+import { Eyebrow, DocRule } from "@/components/primitives/Marks";
+import { business } from "@/lib/data";
 
-type Field = "company" | "contact" | "email" | "deliveryDate" | "scope" | "type";
+type Field = "name" | "phone" | "location" | "details" | "need";
 
-const types = [
-  "Architectural Glass",
-  "Aluminum Extrusions",
-  "Custom Fabrication",
-  "Curtain Wall System",
-  "Skylight / Canopy",
-  "Other",
+const needs = [
+  "Glass",
+  "Aluminum",
+  "Roll-up door",
+  "Shower enclosure",
+  "Glass / kitchen cabinet",
+  "Window or door install",
+  "Not sure yet",
 ];
 
 export function QuoteForm() {
   const [form, setForm] = useState<Record<Field, string>>({
-    company: "",
-    contact: "",
-    email: "",
-    deliveryDate: "",
-    scope: "",
-    type: "Architectural Glass",
+    name: "",
+    phone: "",
+    location: "",
+    details: "",
+    need: "Glass",
   });
-  const [typeOpen, setTypeOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -33,160 +35,133 @@ export function QuoteForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    if (!form.company.trim() || !form.contact.trim() || !form.email.trim()) {
-      setError("Please complete company, contact, and email.");
-      return;
-    }
-    if (!/^\S+@\S+\.\S+$/.test(form.email)) {
-      setError("That email doesn't look right — please double-check.");
+    if (!form.name.trim() || !form.phone.trim()) {
+      setError("Please add your name and a number we can reach you on.");
       return;
     }
     setSubmitted(true);
   };
 
   return (
-    <section id="quote" className="relative py-24 md:py-32 bg-[color:var(--container-low)] border-y border-hairline overflow-hidden">
-      <div className="absolute inset-0 blueprint-grid opacity-50 pointer-events-none" aria-hidden />
+    <section id="quote" className="relative section-y bg-[color:var(--paper-2)] border-y border-steel-line overflow-hidden">
+      <div className="container-page relative grid lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-start">
+        <Reveal className="lg:sticky lg:top-24">
+          <Eyebrow brass rule>Get a quote</Eyebrow>
+          <h2 className="display display-lg mt-5">
+            Tell us what you need.
+          </h2>
+          <p className="mt-5 text-[16px] leading-relaxed text-ink-soft max-w-md">
+            Send a few details and we&apos;ll come back with a quotation. No pressure,
+            no guessing — you&apos;ll know the price before you commit. Prefer to talk
+            it through? Call or message us and we&apos;ll sort it out.
+          </p>
 
-      <div className="container-arch relative">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <Reveal className="lg:col-span-5 lg:sticky lg:top-24">
-            <span className="eyebrow">G · Engagement Form</span>
-            <h2 className="h-display text-[40px] md:text-[52px] mt-4">
-              Request a
-              <br />
-              <span className="italic font-medium text-[color:var(--blueprint)]">supply quote.</span>
-            </h2>
-            <p className="mt-6 text-[15.5px] leading-[1.65] text-ink-soft max-w-md">
-              Submit project specs and we&apos;ll respond inside two business days with
-              budgetary pricing, material availability, and a fabrication
-              schedule against your delivery window.
-            </p>
+          <div className="mt-8 flex flex-col gap-3">
+            <a href={business.phoneHref} className="framed framed-hover flex items-center gap-3.5 p-4">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-[var(--r)] bg-[color:var(--navy)] text-[color:var(--on-navy)] shrink-0">
+                <Phone className="h-4.5 w-4.5" strokeWidth={1.5} />
+              </span>
+              <span className="flex flex-col">
+                <span className="field-label">Call us</span>
+                <span className="text-[15px] font-medium text-navy">{business.phone}</span>
+              </span>
+            </a>
+            <a href={business.messengerHref} target="_blank" rel="noopener noreferrer" className="framed framed-hover flex items-center gap-3.5 p-4">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-[var(--r)] bg-[color:var(--brass)] text-white shrink-0">
+                <MessageCircle className="h-4.5 w-4.5" strokeWidth={1.5} />
+              </span>
+              <span className="flex flex-col">
+                <span className="field-label">Message on Messenger</span>
+                <span className="text-[15px] font-medium text-navy">{business.messenger}</span>
+              </span>
+            </a>
+          </div>
+        </Reveal>
 
-            <ul className="mt-8 flex flex-col gap-3">
-              {[
-                "Response inside 48 business hours",
-                "PE-stamped shop drawings on commercial spec",
-                "No project too small if the spec is correct",
-              ].map((t) => (
-                <li key={t} className="flex items-start gap-3 text-[14px] text-ink-soft">
-                  <span className="inline-flex h-5 w-5 mt-0.5 items-center justify-center rounded-sm border border-outline-variant bg-[color:var(--container-lowest)] shrink-0">
-                    <Check className="h-3 w-3 text-[color:var(--primary)]" strokeWidth={2.25} />
-                  </span>
-                  {t}
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-10 pt-7 border-t border-hairline flex items-center gap-4">
-              <span className="cad-label">For urgent specs</span>
-              <a href="tel:+18005436679" className="text-[14.5px] font-medium text-[color:var(--primary)] hover:text-[color:var(--primary-hover)]">
-                +1 (800) 543·MERC
-              </a>
+        <Reveal direction="up" delay={0.1}>
+          <form onSubmit={handleSubmit} className="framed framed-strong p-6 md:p-9">
+            <div className="flex items-center justify-between pb-4 mb-1">
+              <span className="mono-data text-[11px] tracking-[0.16em] uppercase text-steel-dark">Quote request</span>
+              <span className="mono-data text-[11px] tracking-[0.16em] uppercase text-steel-dark">No. ______</span>
             </div>
-          </Reveal>
+            <DocRule className="mb-7" />
 
-          <Reveal direction="up" delay={0.1} className="lg:col-span-7">
-            <form
-              onSubmit={handleSubmit}
-              className="relative rounded-sm border border-outline-variant bg-[color:var(--container-lowest)] p-7 md:p-10"
-            >
-              <div className="flex items-center justify-between pb-5 mb-7 border-b border-hairline">
-                <span className="cad-label">Form · QT-2026 · Sheet 1 of 1</span>
-                <span className="cad-label hidden sm:inline">Rev. 02</span>
-              </div>
+            {!submitted ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <FormField label="Your name" value={form.name} onChange={(v) => update("name", v)} placeholder="Full name" />
+                <FormField label="Phone / Messenger" value={form.phone} onChange={(v) => update("phone", v)} placeholder="How we reach you" />
+                <FormField label="Where in Antique" value={form.location} onChange={(v) => update("location", v)} placeholder="Municipality (optional)" />
 
-              {!submitted ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <FormField label="Company Name" value={form.company} onChange={(v) => update("company", v)} placeholder="e.g. Apex Construction" />
-                  <FormField label="Contact Name" value={form.contact} onChange={(v) => update("contact", v)} placeholder="Full name" />
-                  <FormField label="Email" type="email" value={form.email} onChange={(v) => update("email", v)} placeholder="name@firm.com" />
-                  <FormField label="Delivery Window" type="date" value={form.deliveryDate} onChange={(v) => update("deliveryDate", v)} />
-
-                  <div className="sm:col-span-2 flex flex-col gap-2 relative">
-                    <label className="cad-label">Project Supply Type</label>
-                    <button
-                      type="button"
-                      onClick={() => setTypeOpen((v) => !v)}
-                      className="text-left flex items-center justify-between gap-3 h-12 px-3.5 rounded-sm bg-[color:var(--container-lowest)] border border-outline-variant hover:border-[color:var(--primary)] text-[14.5px] text-ink transition-colors"
-                    >
-                      {form.type}
-                      <ChevronDown
-                        className={`h-4 w-4 text-ink-soft transition-transform ${typeOpen ? "rotate-180" : ""}`}
-                        strokeWidth={1.5}
-                      />
-                    </button>
-                    {typeOpen && (
-                      <ul className="absolute z-20 left-0 right-0 top-[78px] rounded-sm border border-outline-variant bg-[color:var(--container-lowest)] shadow-[0_24px_60px_-24px_rgba(0,30,64,0.25)] py-1 overflow-hidden anim-float-down">
-                        {types.map((t) => (
-                          <li key={t}>
-                            <button
-                              type="button"
-                              onClick={() => {
-                                update("type", t);
-                                setTypeOpen(false);
-                              }}
-                              className={`w-full text-left px-3.5 py-2.5 text-[14px] hover:bg-[color:var(--container-low)] transition-colors flex items-center justify-between ${
-                                t === form.type ? "text-[color:var(--primary)] font-medium" : "text-ink"
-                              }`}
-                            >
-                              {t}
-                              {t === form.type && <Check className="h-3.5 w-3.5" strokeWidth={2} />}
-                            </button>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-
-                  <div className="sm:col-span-2 flex flex-col gap-2">
-                    <label className="cad-label">Project Scope &amp; Specifications</label>
-                    <textarea
-                      rows={5}
-                      value={form.scope}
-                      onChange={(e) => update("scope", e.target.value)}
-                      placeholder="Provide preliminary dimensions, quantities, or any specific material requirements."
-                      className="px-3.5 py-3 rounded-sm bg-[color:var(--container-lowest)] border border-outline-variant hover:border-[color:var(--secondary)] focus:border-[color:var(--primary)] outline-none text-[14.5px] text-ink leading-relaxed resize-none transition-colors"
-                    />
-                  </div>
-
-                  {error && (
-                    <div className="sm:col-span-2 rounded-sm border border-[color:var(--error)]/30 bg-[color:var(--error)]/5 px-4 py-3 text-[13px] text-[color:var(--error)] anim-fade-up">
-                      {error}
-                    </div>
-                  )}
-
-                  <div className="sm:col-span-2 flex items-center justify-between pt-3 mt-2 border-t border-hairline">
-                    <span className="cad-label">No spam · response inside 48h</span>
-                    <button type="submit" className="btn-primary">
-                      Submit specifications
-                      <ArrowRight className="h-3.5 w-3.5" strokeWidth={2} />
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                <div className="flex flex-col items-center text-center py-8 anim-fade-up">
-                  <span className="inline-flex h-14 w-14 items-center justify-center rounded-sm border border-[color:var(--primary)] text-[color:var(--primary)]">
-                    <Check className="h-6 w-6" strokeWidth={2} />
-                  </span>
-                  <h3
-                    className="mt-6 text-[26px] md:text-[30px] font-semibold tracking-tight"
-                    style={{ fontFamily: "var(--font-serif)" }}
+                <div className="flex flex-col gap-2 relative">
+                  <label className="field-label">What you need</label>
+                  <button
+                    type="button"
+                    onClick={() => setOpen((v) => !v)}
+                    className="field flex items-center justify-between gap-3 text-left"
                   >
-                    Specifications received.
-                  </h3>
-                  <p className="mt-3 max-w-md text-[14.5px] text-ink-soft leading-[1.6]">
-                    Our spec team will review {form.company || "your firm"}&apos;s scope
-                    and respond at <span className="text-ink font-medium">{form.email}</span> inside two business days.
-                  </p>
-                  <div className="mt-7 flex items-center gap-3">
-                    <span className="cad-label">Ref # JS-{Math.floor(Math.random() * 9000 + 1000)}</span>
-                  </div>
+                    {form.need}
+                    <ChevronDown className={`h-4 w-4 text-steel transition-transform ${open ? "rotate-180" : ""}`} strokeWidth={1.5} />
+                  </button>
+                  {open && (
+                    <ul className="absolute z-20 left-0 right-0 top-[70px] framed bg-[color:var(--paper)] shadow-[var(--shadow-overlay)] py-1 overflow-hidden">
+                      {needs.map((t) => (
+                        <li key={t}>
+                          <button
+                            type="button"
+                            onClick={() => { update("need", t); setOpen(false); }}
+                            className={`w-full text-left px-3.5 py-2.5 text-[14px] hover:bg-[color:var(--paper-2)] transition-colors flex items-center justify-between ${t === form.need ? "text-navy font-medium" : "text-ink"}`}
+                          >
+                            {t}
+                            {t === form.need && <Check className="h-3.5 w-3.5" strokeWidth={2} />}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
-              )}
-            </form>
-          </Reveal>
-        </div>
+
+                <div className="sm:col-span-2 flex flex-col gap-2">
+                  <label className="field-label">Details</label>
+                  <textarea
+                    rows={4}
+                    value={form.details}
+                    onChange={(e) => update("details", e.target.value)}
+                    placeholder="Rough sizes, how many, or what the job is — whatever you have."
+                    className="field resize-none leading-relaxed"
+                  />
+                </div>
+
+                {error && (
+                  <div className="sm:col-span-2 rounded-[var(--r)] border border-[color:var(--alert)]/30 bg-[color:var(--alert)]/5 px-4 py-3 text-[13px] text-[color:var(--alert)]">
+                    {error}
+                  </div>
+                )}
+
+                <div className="sm:col-span-2 flex flex-wrap items-center justify-between gap-4 pt-2">
+                  <span className="mono-data text-[11px] tracking-[0.14em] uppercase text-steel-dark">We reply by call or Messenger</span>
+                  <button type="submit" className="btn btn-primary">
+                    Send request <ArrowRight className="h-4 w-4" strokeWidth={2} />
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="flex flex-col items-center text-center py-8">
+                <span className="inline-flex h-14 w-14 items-center justify-center rounded-full border-2 border-[color:var(--brass)] text-[color:var(--brass)]">
+                  <Check className="h-6 w-6" strokeWidth={2.5} />
+                </span>
+                <h3 className="display display-md mt-6">Got it — thank you.</h3>
+                <p className="mt-3 max-w-md text-[15px] text-ink-soft leading-relaxed">
+                  Thanks {form.name || "for reaching out"}. We&apos;ll prepare a quotation
+                  and get back to you by call or Messenger. For a faster reply, message us
+                  directly anytime.
+                </p>
+                <a href={business.messengerHref} target="_blank" rel="noopener noreferrer" className="btn btn-brass mt-7">
+                  <MessageCircle className="h-4 w-4" /> Message us now
+                </a>
+              </div>
+            )}
+          </form>
+        </Reveal>
       </div>
     </section>
   );
@@ -197,24 +172,16 @@ function FormField({
   value,
   onChange,
   placeholder,
-  type = "text",
 }: {
   label: string;
   value: string;
   onChange: (v: string) => void;
   placeholder?: string;
-  type?: string;
 }) {
   return (
     <div className="flex flex-col gap-2">
-      <label className="cad-label">{label}</label>
-      <input
-        type={type}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        placeholder={placeholder}
-        className="h-12 px-3.5 rounded-sm bg-[color:var(--container-lowest)] border border-outline-variant hover:border-[color:var(--secondary)] focus:border-[color:var(--primary)] outline-none text-[14.5px] text-ink transition-colors placeholder:text-[color:var(--outline)]/60"
-      />
+      <label className="field-label">{label}</label>
+      <input type="text" value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder} className="field" />
     </div>
   );
 }

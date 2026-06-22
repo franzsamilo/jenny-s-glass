@@ -1,103 +1,97 @@
-import { Mail, Phone, MapPin, ArrowUpRight } from "@/components/primitives/Icons";
+import { Phone, MessageCircle, MapPin, Clock, ArrowUpRight } from "@/components/primitives/Icons";
 import { Logo } from "./Logo";
-
-const cols = [
-  {
-    title: "Solutions",
-    items: [
-      "Architectural Glass",
-      "Aluminum Extrusions",
-      "Custom Fabrication",
-      "Curtain Wall Systems",
-      "Skylights & Canopies",
-    ],
-  },
-  {
-    title: "Company",
-    items: ["About Jenny's", "Projects", "Process", "Engineering Team", "Careers"],
-  },
-  {
-    title: "Resources",
-    items: ["Spec Sheets", "Shop Drawings", "Warranty", "Sustainability", "Trade Accounts"],
-  },
-];
+import { business, primaryNav } from "@/lib/data";
 
 export function Footer() {
   return (
-    <footer className="relative bg-[color:var(--inverse-surface)] text-on-inverse">
-      <div className="absolute inset-0 blueprint-grid opacity-30 pointer-events-none" aria-hidden />
-      <div className="container-arch relative pt-20 pb-10">
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 pb-16 border-b border-white/10">
+    <footer className="relative bg-[color:var(--navy-deep)] text-on-navy">
+      <div className="absolute inset-0 grid-faint opacity-60 pointer-events-none" aria-hidden />
+      <div className="container-page relative pt-16 pb-10">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 pb-12 border-b border-white/10">
           <div className="lg:w-2/5 flex flex-col gap-6">
             <Logo invert />
             <p className="text-[15px] leading-relaxed text-white/70 max-w-md">
-              Premium glass and aluminum, engineered for the buildings that
-              outlast trends. Family-owned since 1992 — supplying architects,
-              contractors, and discerning residential builders across the region.
+              A real, licensed glass-and-aluminum store in the {business.region}. We
+              supply, fabricate, and install — and we stand behind every job. Family-run
+              since {business.estYear}.
             </p>
 
-            <div className="flex flex-col gap-3 mt-2">
-              <a className="group inline-flex items-center gap-3 text-[13.5px] text-white/85 hover:text-white" href="tel:+18005436679">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-sm border border-white/15 group-hover:border-white/40 transition-colors">
+            <div className="flex flex-col gap-3 mt-1">
+              <a className="group inline-flex items-center gap-3 text-[14px] text-white/85 hover:text-white" href={business.phoneHref}>
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-[var(--r)] border border-white/15 group-hover:border-[color:var(--brass)] transition-colors">
                   <Phone className="h-4 w-4" strokeWidth={1.5} />
                 </span>
-                +1 (800) 543·MERC
+                {business.phone}
               </a>
-              <a className="group inline-flex items-center gap-3 text-[13.5px] text-white/85 hover:text-white" href="mailto:specs@jennys-supply.com">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-sm border border-white/15 group-hover:border-white/40 transition-colors">
-                  <Mail className="h-4 w-4" strokeWidth={1.5} />
+              <a className="group inline-flex items-center gap-3 text-[14px] text-white/85 hover:text-white" href={business.messengerHref} target="_blank" rel="noopener noreferrer">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-[var(--r)] border border-white/15 group-hover:border-[color:var(--brass)] transition-colors">
+                  <MessageCircle className="h-4 w-4" strokeWidth={1.5} />
                 </span>
-                specs@jennys-supply.com
+                Message us on Messenger
               </a>
-              <div className="inline-flex items-start gap-3 text-[13.5px] text-white/85">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-sm border border-white/15">
+              <div className="inline-flex items-start gap-3 text-[14px] text-white/85">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-[var(--r)] border border-white/15 shrink-0">
                   <MapPin className="h-4 w-4" strokeWidth={1.5} />
                 </span>
-                <span className="pt-1.5">
-                  Yard No. 4 — 1412 Foundry Way<br />
-                  Industrial Park · Operating M–F 7a–5p
+                <span className="pt-1">{business.addressLine}<br /><span className="text-white/55 text-[13px]">{business.area}</span></span>
+              </div>
+              <div className="inline-flex items-center gap-3 text-[14px] text-white/85">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-[var(--r)] border border-white/15 shrink-0">
+                  <Clock className="h-4 w-4" strokeWidth={1.5} />
                 </span>
+                {business.hours} · {business.days}
               </div>
             </div>
           </div>
 
-          <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-8">
-            {cols.map((col) => (
-              <div key={col.title} className="flex flex-col gap-3">
-                <div className="cad-label text-[color:var(--inverse-primary)]">{col.title}</div>
-                <ul className="flex flex-col gap-2.5 mt-1">
-                  {col.items.map((it) => (
-                    <li key={it}>
-                      <a className="text-[13.5px] text-white/80 hover:text-white inline-flex items-center gap-1 group" href="#">
-                        {it}
-                        <ArrowUpRight className="h-3 w-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          <div className="flex-1 grid grid-cols-2 sm:grid-cols-3 gap-8">
+            <FooterCol title="Site" items={primaryNav.map((n) => ({ label: n.label, href: n.href }))} />
+            <FooterCol
+              title="What we do"
+              items={[
+                { label: "Supply", href: "#services" },
+                { label: "Install", href: "#services" },
+                { label: "Fabricate", href: "#services" },
+              ]}
+            />
+            <FooterCol
+              title="Get started"
+              items={[
+                { label: "Get a quote", href: "#quote" },
+                { label: "How buying works", href: "#buying" },
+                { label: "Find us", href: "#find-us" },
+              ]}
+            />
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pt-10">
-          <div className="flex flex-col gap-1">
-            <span className="cad-label" style={{ color: "var(--inverse-primary)" }}>Drawing No. JS-2026-001 · Sheet 1 of 1</span>
-            <span className="text-[12px] text-white/55">
-              © 2026 Jenny&apos;s Supply Co. · All material specifications subject to change without notice.
-            </span>
-          </div>
-          <div className="flex flex-wrap items-center gap-4 text-[12px] text-white/55">
-            <a href="#" className="hover:text-white">Terms</a>
-            <span className="opacity-40">·</span>
-            <a href="#" className="hover:text-white">Privacy</a>
-            <span className="opacity-40">·</span>
-            <a href="#" className="hover:text-white">Accessibility</a>
-            <span className="opacity-40">·</span>
-            <span>AAMA · GANA · AISC member</span>
-          </div>
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pt-8">
+          <span className="mono-data text-[11px] tracking-[0.16em] uppercase" style={{ color: "var(--brass-bright)" }}>
+            Licensed business · Official receipts · Est. {business.estYear}
+          </span>
+          <span className="text-[12px] text-white/50">
+            © {new Date().getFullYear()} {business.name} · {business.region}, Philippines
+          </span>
         </div>
       </div>
     </footer>
+  );
+}
+
+function FooterCol({ title, items }: { title: string; items: { label: string; href: string }[] }) {
+  return (
+    <div className="flex flex-col gap-3">
+      <div className="mono-data text-[11px] tracking-[0.16em] uppercase text-white/45">{title}</div>
+      <ul className="flex flex-col gap-2.5 mt-1">
+        {items.map((it) => (
+          <li key={it.label}>
+            <a className="text-[14px] text-white/80 hover:text-white inline-flex items-center gap-1 group" href={it.href}>
+              {it.label}
+              <ArrowUpRight className="h-3 w-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

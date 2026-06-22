@@ -198,3 +198,67 @@ export const Cog = ({ className = "", strokeWidth = 1.5, size = 16 }: IconProps)
     <circle cx="12" cy="12" r="4" />
   </svg>
 );
+
+/* — Trade-specific icons (Jennys) — */
+export const MessageCircle = ({ className = "", strokeWidth = 1.5, size = 16 }: IconProps) => (
+  <svg {...base(size, strokeWidth)} className={className}>
+    <path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5z" />
+  </svg>
+);
+
+export const Store = ({ className = "", strokeWidth = 1.5, size = 16 }: IconProps) => (
+  <svg {...base(size, strokeWidth)} className={className}>
+    <path d="M2 9l2-5h16l2 5a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z" />
+    <path d="M4 9v11h16V9M9 20v-5h6v5" />
+  </svg>
+);
+
+export const Receipt = ({ className = "", strokeWidth = 1.5, size = 16 }: IconProps) => (
+  <svg {...base(size, strokeWidth)} className={className}>
+    <path d="M6 2h12v20l-3-2-3 2-3-2-3 2z" />
+    <path d="M9 8h6M9 12h6M9 16h4" />
+  </svg>
+);
+
+export const LifeBuoy = ({ className = "", strokeWidth = 1.5, size = 16 }: IconProps) => (
+  <svg {...base(size, strokeWidth)} className={className}>
+    <circle cx="12" cy="12" r="9" />
+    <circle cx="12" cy="12" r="3.5" />
+    <path d="m5 5 4.5 4.5M14.5 14.5 19 19M19 5l-4.5 4.5M9.5 14.5 5 19" />
+  </svg>
+);
+
+export const Cash = ({ className = "", strokeWidth = 1.5, size = 16 }: IconProps) => (
+  <svg {...base(size, strokeWidth)} className={className}>
+    <rect x="2" y="6" width="20" height="12" rx="2" />
+    <circle cx="12" cy="12" r="2.5" />
+    <path d="M6 10v4M18 10v4" />
+  </svg>
+);
+
+export const Rollup = ({ className = "", strokeWidth = 1.5, size = 16 }: IconProps) => (
+  <svg {...base(size, strokeWidth)} className={className}>
+    <rect x="3" y="3" width="18" height="18" rx="1" />
+    <path d="M3 7.5h18M5 10.5h14M5 13.5h14M5 16.5h14M5 19h14" />
+  </svg>
+);
+
+export const Bolt = ({ className = "", strokeWidth = 1.5, size = 16 }: IconProps) => (
+  <svg {...base(size, strokeWidth)} className={className}>
+    <path d="M12 3l7 4v8l-7 4-7-4V7z" />
+    <circle cx="12" cy="11" r="3" />
+  </svg>
+);
+
+export const Clock = ({ className = "", strokeWidth = 1.5, size = 16 }: IconProps) => (
+  <svg {...base(size, strokeWidth)} className={className}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 7v5l3 2" />
+  </svg>
+);
+
+export const ChevronRight = ({ className = "", strokeWidth = 1.5, size = 16 }: IconProps) => (
+  <svg {...base(size, strokeWidth)} className={className}>
+    <path d="m9 6 6 6-6 6" />
+  </svg>
+);

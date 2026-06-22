@@ -14,12 +14,17 @@ const transformFor = (dir: Direction, distance: number) => {
   }
 };
 
+/**
+ * Scroll-in reveal — fade + small settle. Self-contained (no global CSS),
+ * respects prefers-reduced-motion by rendering the end-state immediately.
+ * Stagger by passing incremental `delay` to siblings.
+ */
 export function Reveal({
   children,
   direction = "up",
-  distance = 22,
+  distance = 14,
   delay = 0,
-  duration = 0.7,
+  duration = 0.6,
   className = "",
   amount = 0.18,
 }: {
@@ -60,92 +65,12 @@ export function Reveal({
   const style: CSSProperties = {
     opacity: show ? 1 : 0,
     transform: show ? "none" : transformFor(direction, distance),
-    transition: `opacity ${duration}s cubic-bezier(0.22,1,0.36,1) ${delay}s, transform ${duration}s cubic-bezier(0.22,1,0.36,1) ${delay}s`,
+    transition: `opacity ${duration}s cubic-bezier(0.2,0.7,0.2,1) ${delay}s, transform ${duration}s cubic-bezier(0.2,0.7,0.2,1) ${delay}s`,
     willChange: "opacity, transform",
   };
 
   return (
     <div ref={ref} className={className} style={style}>
-      {children}
-    </div>
-  );
-}
-
-export function Stagger({
-  children,
-  className = "",
-  delayChildren = 0.05,
-  staggerChildren = 0.08,
-  amount = 0.18,
-}: {
-  children: ReactNode;
-  className?: string;
-  delayChildren?: number;
-  staggerChildren?: number;
-  amount?: number;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    const reduce = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) { setShow(true); return; }
-    if (!ref.current) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting) {
-            setShow(true);
-            observer.disconnect();
-            break;
-          }
-        }
-      },
-      { threshold: amount },
-    );
-    observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [amount]);
-
-  return (
-    <div
-      ref={ref}
-      className={className}
-      data-stagger={show ? "in" : "out"}
-      style={{ "--stagger-delay": `${delayChildren}s`, "--stagger-step": `${staggerChildren}s` } as CSSProperties}
-    >
-      {children}
-    </div>
-  );
-}
-
-export function StaggerChild({
-  children,
-  className = "",
-  direction = "up",
-  distance = 18,
-  duration = 0.6,
-  index = 0,
-}: {
-  children: ReactNode;
-  className?: string;
-  direction?: Direction;
-  distance?: number;
-  duration?: number;
-  index?: number;
-}) {
-  const initialTransform = transformFor(direction, distance);
-  return (
-    <div
-      className={`stagger-child ${className}`}
-      style={
-        {
-          "--initial-transform": initialTransform,
-          "--stagger-duration": `${duration}s`,
-          "--stagger-index": index,
-        } as CSSProperties
-      }
-    >
       {children}
     </div>
   );

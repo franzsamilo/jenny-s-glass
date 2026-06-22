@@ -1,122 +1,86 @@
 @import "tailwindcss";
 
 /* ============================================================
-   JENNY'S SUPPLY — Trust & Heritage design tokens
-   Architectural glass & aluminum. Blueprint precision.
-   Source: brief/DESIGN.md
+   JENNY'S GLASS & ALUMINUM — "Grounded Trade Authority"
+   Authority from being real and documented: the framed permit,
+   the stamped receipt, the aluminum frame around the glass.
+   Source: brief/design-system.md  (supersedes brief/DESIGN.md)
    ============================================================ */
 
 :root {
-  /* Surfaces — warm-white "premium paper" base */
-  --surface: #f9f9ff;
-  --surface-dim: #cfdaf2;
-  --surface-bright: #ffffff;
-  --container-lowest: #ffffff;
-  --container-low: #f0f3ff;
-  --container: #e7eeff;
-  --container-high: #dee8ff;
-  --container-highest: #d8e3fb;
+  /* — color — */
+  --paper: #f5f1e8;       /* warm document ground, not pure white */
+  --paper-2: #ece6d7;     /* alternating band */
+  --paper-3: #e3dcc9;     /* deepest paper / edges */
+  --ink: #211e1a;         /* warm near-black */
+  --ink-soft: #5c564b;    /* warm secondary text (AA on paper) */
 
-  /* Ink */
-  --on-surface: #111c2d;
-  --on-surface-variant: #43474f;
-  --inverse-surface: #1a2030;
-  --inverse-on-surface: #ecf1ff;
+  --navy: #13294b;        /* authority / primary — VERIFY against logo */
+  --navy-hover: #1b3a66;
+  --navy-deep: #0d1d36;   /* footer / dark bands */
+  --on-navy: #f5f1e8;
 
-  /* Lines */
-  --outline: #737780;
-  --outline-variant: #c3c6d1;
-  --hairline: #dde2ee;
+  --steel-line: #c7ccd3;  /* hairline aluminum-frame borders */
+  --steel: #8a93a0;
+  --steel-dark: #5a6470;  /* cool labels / rules */
 
-  /* Brand */
-  --primary: #001e40;
-  --primary-hover: #0a2d57;
-  --primary-container: #003366;
-  --on-primary: #ffffff;
-  --on-primary-container: #799dd6;
-  --inverse-primary: #a7c8ff;
+  --brass: #b5772e;       /* the seal / stamp accent — rare */
+  --brass-bright: #cf8f3e;
+  --brass-wash: rgba(181, 119, 46, 0.1);
 
-  /* Secondary — soft slate (aluminum) */
-  --secondary: #505f76;
-  --secondary-container: #d0e1fb;
-  --on-secondary: #ffffff;
-  --on-secondary-container: #54647a;
+  --alert: #a8301f;
 
-  /* Tertiary — neutral graphite */
-  --tertiary: #1e1e1c;
-  --tertiary-container: #333331;
+  /* — shape + depth — */
+  --r: 3px;
+  --r-sm: 2px;
+  --shadow-overlay: 0 8px 30px -12px rgba(19, 41, 75, 0.18);
+  --shadow-press: 0 14px 40px -20px rgba(19, 41, 75, 0.35);
 
-  /* Status */
-  --error: #ba1a1a;
-  --on-error: #ffffff;
-  --success: #1b5e20;
-  --warning: #b26b00;
+  /* — motion — */
+  --ease-settle: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur: 260ms;
+  --dur-fast: 180ms;
 
-  /* Accents — used sparingly for blueprint annotations */
-  --blueprint: #1f477b;
-  --blueprint-faint: rgba(31, 71, 123, 0.12);
-  --gold: #b58a3a;
-
-  /* Spatial */
-  --container-max: 1280px;
+  /* — rhythm — */
+  --container: 1180px;
   --gutter: 24px;
-  --margin-desktop: 64px;
-  --margin-mobile: 20px;
+  --pad-x: 20px;
+  --section-y: 88px;
+}
+
+@media (min-width: 768px) {
+  :root { --pad-x: 56px; }
+}
+@media (max-width: 767px) {
+  :root { --section-y: 56px; }
 }
 
 @theme inline {
-  --color-surface: var(--surface);
-  --color-surface-dim: var(--surface-dim);
-  --color-surface-bright: var(--surface-bright);
-  --color-container-lowest: var(--container-lowest);
-  --color-container-low: var(--container-low);
-  --color-container: var(--container);
-  --color-container-high: var(--container-high);
-  --color-container-highest: var(--container-highest);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-paper-3: var(--paper-3);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
 
-  --color-ink: var(--on-surface);
-  --color-ink-soft: var(--on-surface-variant);
-  --color-inverse: var(--inverse-surface);
-  --color-on-inverse: var(--inverse-on-surface);
+  --color-navy: var(--navy);
+  --color-navy-hover: var(--navy-hover);
+  --color-navy-deep: var(--navy-deep);
+  --color-on-navy: var(--on-navy);
 
-  --color-line: var(--outline);
-  --color-line-soft: var(--outline-variant);
-  --color-hairline: var(--hairline);
+  --color-steel-line: var(--steel-line);
+  --color-steel: var(--steel);
+  --color-steel-dark: var(--steel-dark);
 
-  /* Aliases matching brief naming for component ergonomics */
-  --color-outline: var(--outline);
-  --color-outline-variant: var(--outline-variant);
-  --color-on-primary: var(--on-primary);
-  --color-inverse-primary: var(--inverse-primary);
-  --color-success: var(--success);
-  --color-warning: var(--warning);
+  --color-brass: var(--brass);
+  --color-brass-bright: var(--brass-bright);
+  --color-alert: var(--alert);
 
-  --color-primary: var(--primary);
-  --color-primary-hover: var(--primary-hover);
-  --color-primary-container: var(--primary-container);
-  --color-on-primary: var(--on-primary);
-  --color-on-primary-container: var(--on-primary-container);
+  --font-display: var(--font-zilla), "Zilla Slab", Georgia, serif;
+  --font-body: var(--font-plex-sans), "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), "IBM Plex Mono", ui-monospace, monospace;
 
-  --color-secondary: var(--secondary);
-  --color-secondary-container: var(--secondary-container);
-
-  --color-tertiary: var(--tertiary);
-  --color-blueprint: var(--blueprint);
-  --color-blueprint-faint: var(--blueprint-faint);
-  --color-gold: var(--gold);
-  --color-error: var(--error);
-
-  --font-serif: var(--font-source-serif), "Source Serif 4", ui-serif, Georgia, serif;
-  --font-sans: var(--font-inter), Inter, ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-jet-mono), "JetBrains Mono", ui-monospace, monospace;
-
-  --radius-sm: 2px;
-  --radius: 4px;
-  --radius-md: 6px;
-  --radius-lg: 8px;
-  --radius-xl: 12px;
-
-  --tracking-arch: 0.18em;
+  --radius-sm: var(--r-sm);
+  --radius: var(--r);
 }
 
 /* ============================================================
@@ -124,240 +88,292 @@
    ============================================================ */
 
 html {
-  font-feature-settings: "ss01", "ss02", "cv11";
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--surface);
-  color: var(--on-surface);
-  font-family: var(--font-inter), Inter, ui-sans-serif, system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background: var(--primary);
-  color: var(--on-primary);
+  background: var(--navy);
+  color: var(--on-navy);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: var(--paper-2); }
+::-webkit-scrollbar-thumb {
+  background: var(--steel);
+  border-radius: 999px;
+  border: 3px solid var(--paper-2);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--steel-dark); }
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+
+.container-page {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--pad-x);
+}
+
+.section-y { padding-block: var(--section-y); }
+
+/* ============================================================
+   TYPE ROLES
+   ============================================================ */
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+}
+.display-xl { font-size: clamp(2.6rem, 6vw, 4.4rem); }
+.display-lg { font-size: clamp(2rem, 4.2vw, 3rem); }
+.display-md { font-size: clamp(1.5rem, 2.6vw, 2rem); }
+
+/* mono eyebrow — "annotation on a form" */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--steel-dark);
+}
+.eyebrow-brass { color: var(--brass); }
+
+.mono-data {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
 }
 
 /* ============================================================
-   ARCHITECTURAL UTILITIES
+   THE DOCUMENT LANGUAGE — frame, rule, seal, ledger
    ============================================================ */
 
-.paper-tex {
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.07  0 0 0 0 0.11  0 0 0 0 0.18  0 0 0 0.035 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  background-size: 180px 180px;
+/* Framed Pane — the aluminum-frame card */
+.framed {
+  position: relative;
+  background: var(--paper);
+  border: 1.5px solid var(--steel-line);
+  border-radius: var(--r);
+}
+.framed::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+.framed-strong { border: 1.5px solid var(--navy); }
+.framed-hover {
+  transition: border-color var(--dur) var(--ease-settle),
+    transform var(--dur) var(--ease-settle);
+}
+.framed-hover:hover {
+  transform: translateY(-2px);
+  border-color: var(--navy);
 }
 
-.blueprint-grid {
+/* Letterhead double-rule */
+.rule-letterhead {
+  height: 4px;
+  background:
+    linear-gradient(var(--navy), var(--navy)) top / 100% 3px no-repeat,
+    linear-gradient(var(--steel-line), var(--steel-line)) bottom / 100% 1px no-repeat;
+}
+
+/* paper grain overlay */
+.paper-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.13  0 0 0 0 0.12  0 0 0 0 0.1  0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 160px 160px;
+}
+
+/* faint ledger grid for dark bands */
+.grid-faint {
   background-image:
-    linear-gradient(to right, rgba(31, 71, 123, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(31, 71, 123, 0.06) 1px, transparent 1px);
-  background-size: 48px 48px;
-}
-.blueprint-grid-dense {
-  background-image:
-    linear-gradient(to right, rgba(31, 71, 123, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(31, 71, 123, 0.05) 1px, transparent 1px),
-    linear-gradient(to right, rgba(31, 71, 123, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(31, 71, 123, 0.02) 1px, transparent 1px);
-  background-size: 96px 96px, 96px 96px, 24px 24px, 24px 24px;
+    linear-gradient(to right, rgba(245, 241, 232, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(245, 241, 232, 0.05) 1px, transparent 1px);
+  background-size: 52px 52px;
 }
 
-.cad-label {
-  font-family: var(--font-jet-mono), "JetBrains Mono", ui-monospace, monospace;
-  font-size: 10.5px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--blueprint);
+/* Material swatches (photo-free identity for glass / aluminum / roll-up) */
+.swatch {
+  position: relative;
+  border-radius: var(--r);
+  overflow: hidden;
+  isolation: isolate;
+}
+.swatch-glass {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.55), rgba(199, 213, 224, 0.15) 40%, rgba(19, 41, 75, 0.08)),
+    linear-gradient(115deg, #cfe0e6, #aebfc8 55%, #8fa4b0);
+}
+.swatch-aluminum {
+  background:
+    repeating-linear-gradient(100deg, rgba(255, 255, 255, 0.35) 0 2px, transparent 2px 6px),
+    linear-gradient(120deg, #c3c8cf, #9aa2ac 45%, #7f8893);
+}
+.swatch-rollup {
+  background:
+    repeating-linear-gradient(180deg, rgba(13, 29, 54, 0.16) 0 6px, rgba(255, 255, 255, 0.12) 6px 12px),
+    linear-gradient(120deg, #b9bdc4, #969da7);
+}
+.swatch-cabinet {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.4), transparent 50%),
+    linear-gradient(120deg, #1f3a5f, #13294b 60%, #0d1d36);
 }
 
-.h-display {
-  font-family: var(--font-source-serif), "Source Serif 4", Georgia, serif;
-  font-weight: 600;
-  letter-spacing: -0.025em;
-  line-height: 1.02;
-  color: var(--on-surface);
-}
+/* ============================================================
+   BUTTONS
+   ============================================================ */
 
-.eyebrow {
-  font-family: var(--font-inter), Inter, sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: var(--tracking-arch);
-  text-transform: uppercase;
-  color: var(--blueprint);
-}
-
-.hr-arch {
-  height: 1px;
-  background: var(--hairline);
-  border: none;
-}
-
-.btn-primary {
+.btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 9px;
   padding: 14px 22px;
-  background: var(--primary);
-  color: var(--on-primary);
-  font-size: 13px;
-  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  border-radius: var(--radius);
-  border: 1px solid var(--primary);
-  transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+  border-radius: var(--r);
+  border: 1.5px solid transparent;
   cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-settle),
+    border-color var(--dur-fast) var(--ease-settle),
+    transform var(--dur-fast) var(--ease-settle),
+    color var(--dur-fast) var(--ease-settle);
 }
-.btn-primary:hover {
-  background: var(--primary-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 12px 30px -16px rgba(0, 30, 64, 0.45);
+.btn-primary {
+  background: var(--navy);
+  color: var(--on-navy);
+  border-color: var(--navy);
 }
+.btn-primary:hover { background: var(--navy-hover); border-color: var(--navy-hover); transform: translateY(-1px); }
 .btn-primary:active { transform: translateY(0); }
 
 .btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 22px;
   background: transparent;
-  color: var(--on-surface);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  color: var(--navy);
+  border-color: var(--navy);
+}
+.btn-secondary:hover { background: rgba(19, 41, 75, 0.06); transform: translateY(-1px); }
+
+.btn-brass {
+  background: var(--brass);
+  color: #fff;
+  border-color: var(--brass);
+}
+.btn-brass:hover { background: var(--brass-bright); border-color: var(--brass-bright); transform: translateY(-1px); }
+
+.btn-ghost-light {
+  background: transparent;
+  color: var(--on-navy);
+  border-color: rgba(245, 241, 232, 0.3);
+}
+.btn-ghost-light:hover { border-color: var(--on-navy); background: rgba(245, 241, 232, 0.08); }
+
+/* link with brass underline on hover */
+.link-brass {
+  position: relative;
+  color: var(--navy);
+  font-weight: 500;
+}
+.link-brass::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 100%; height: 1.5px;
+  background: var(--brass);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur) var(--ease-settle);
+}
+.link-brass:hover::after { transform: scaleX(1); }
+
+/* ============================================================
+   FORM FIELDS — receipt / form-field feel
+   ============================================================ */
+
+.field-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  border-radius: var(--radius);
-  border: 1px solid var(--outline-variant);
-  transition: background 200ms ease, border-color 200ms ease, color 200ms ease;
-  cursor: pointer;
+  color: var(--steel-dark);
 }
-.btn-secondary:hover {
-  border-color: var(--primary);
-  color: var(--primary);
-  background: var(--container-low);
+.field {
+  width: 100%;
+  background: var(--paper);
+  border: 1.5px solid var(--steel-line);
+  border-radius: var(--r);
+  padding: 12px 14px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--ink);
+  transition: border-color var(--dur-fast) var(--ease-settle), box-shadow var(--dur-fast) var(--ease-settle);
 }
-
-.card-arch {
-  background: var(--container-lowest);
-  border: 1px solid var(--outline-variant);
-  border-radius: var(--radius);
-  transition: border-color 240ms ease, transform 240ms ease, background 240ms ease;
-}
-.card-arch:hover {
-  border-color: var(--primary);
-  transform: translateY(-2px);
+.field::placeholder { color: var(--steel); }
+.field:focus {
+  outline: none;
+  border-color: var(--navy);
+  box-shadow: inset 0 0 0 1px var(--navy);
 }
 
-@keyframes marquee-x {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-.marquee-track {
-  animation: marquee-x 45s linear infinite;
-}
-.marquee-track:hover {
-  animation-play-state: paused;
-}
+/* ============================================================
+   MOTION — Level 1, "settled / weighted"
+   ============================================================ */
 
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes seal-press {
+  0% { opacity: 0; transform: scale(1.08) rotate(-7deg); }
+  70% { opacity: 1; }
+  100% { opacity: 1; transform: scale(1) rotate(-7deg); }
 }
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-@keyframes draw-stroke {
-  from { stroke-dashoffset: 1200; opacity: 0; }
-  to { stroke-dashoffset: 0; opacity: 1; }
-}
-@keyframes float-down {
-  0% { opacity: 0; transform: translateY(-12px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-@keyframes slide-right {
-  from { transform: translateX(-12px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-@keyframes grow-x {
+.seal-press { animation: seal-press var(--dur) var(--ease-settle) both; }
+
+@keyframes count-bar {
   from { transform: scaleX(0); }
   to { transform: scaleX(1); }
 }
 
-.anim-fade-up {
-  opacity: 0;
-  animation: fade-up 0.8s cubic-bezier(0.22,1,0.36,1) forwards;
-}
-.anim-fade-in {
-  opacity: 0;
-  animation: fade-in 0.9s ease forwards;
-}
-.anim-float-down {
-  opacity: 0;
-  animation: float-down 0.8s cubic-bezier(0.22,1,0.36,1) forwards;
-}
-.anim-slide-right {
-  opacity: 0;
-  animation: slide-right 0.8s cubic-bezier(0.22,1,0.36,1) forwards;
-}
-
-/* Stagger child reveal — used inside Stagger primitive.
-   data-stagger="in" on parent triggers, --stagger-index ordinal applies delay. */
-.stagger-child {
-  opacity: 0;
-  transform: var(--initial-transform, translateY(18px));
-  transition:
-    opacity var(--stagger-duration, 0.6s) cubic-bezier(0.22,1,0.36,1),
-    transform var(--stagger-duration, 0.6s) cubic-bezier(0.22,1,0.36,1);
-  transition-delay: calc(var(--stagger-delay, 0.05s) + (var(--stagger-step, 0.08s) * var(--stagger-index, 0)));
-}
-[data-stagger="in"] > .stagger-child,
-[data-stagger="in"] > * > .stagger-child {
-  opacity: 1;
-  transform: none;
-}
-
-/* SVG draw-in stroke variant */
-.draw-line {
-  stroke-dasharray: 1200;
-  stroke-dashoffset: 1200;
-  animation: draw-stroke 1.6s cubic-bezier(0.22,1,0.36,1) forwards;
-}
-
-/* Underline grow */
-.grow-x {
-  transform-origin: left;
-  animation: grow-x 0.7s 0.5s cubic-bezier(0.22,1,0.36,1) backwards;
-}
-
-::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: var(--surface); }
-::-webkit-scrollbar-thumb {
-  background: var(--outline-variant);
-  border-radius: 999px;
-  border: 2px solid var(--surface);
-}
-::-webkit-scrollbar-thumb:hover { background: var(--secondary); }
-
-*:focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 2px;
-  border-radius: 2px;
-}
-
-.container-arch {
-  width: 100%;
-  max-width: var(--container-max);
-  margin-inline: auto;
-  padding-inline: var(--margin-mobile);
-}
-@media (min-width: 768px) {
-  .container-arch { padding-inline: var(--margin-desktop); }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
